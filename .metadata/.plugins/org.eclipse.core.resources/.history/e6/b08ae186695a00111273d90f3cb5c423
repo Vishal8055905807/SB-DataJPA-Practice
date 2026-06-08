@@ -1,0 +1,26 @@
+package com.vishal.entity;
+
+import com.vishal.pk.StudentCoursePk;
+
+import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.Entity;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class StudentCourse {
+	
+@EmbeddedId
+StudentCoursePk id;
+
+String courseName;
+
+
+	
+	
+
+}

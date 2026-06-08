@@ -1,0 +1,24 @@
+package com.vishal;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+
+import com.vishal.service.ProductService;
+
+@SpringBootApplication
+public class Application {
+
+	public static void main(String[] args) throws Exception {
+		ConfigurableApplicationContext ctxt = SpringApplication.run(Application.class, args);
+		ProductService productObj = ctxt.getBean(ProductService.class);
+		productObj.saveProduct();
+		
+		Thread.sleep(20000);
+			
+		productObj.updateProduct();
+			
+			
+		}
+
+}

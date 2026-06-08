@@ -1,0 +1,5 @@
+package com.vishal.mysql.entity;
+
+public class Product {
+
+}

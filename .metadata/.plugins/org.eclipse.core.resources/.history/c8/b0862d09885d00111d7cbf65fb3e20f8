@@ -1,0 +1,80 @@
+package com.vishal.service;
+
+import java.util.Arrays;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.vishal.entity.Address;
+import com.vishal.entity.Worker;
+import com.vishal.repo.AddressRepo;
+import com.vishal.repo.WorkerRepo;
+
+@Service
+public class WorkerService {
+
+	@Autowired
+	WorkerRepo workRepo;
+	
+	@Autowired
+	AddressRepo addressRepo;
+
+//SAVE OPERATION	
+	
+	
+	public void saveWorkerWithAddress() {
+		
+	Worker worker = new Worker();
+	worker.setName("Boaster");
+	
+	Address currentAdd = new Address();
+	currentAdd.setArea("Abd");
+	currentAdd.setState("MH");
+	currentAdd.setType("current");
+	
+	Address permanentAdd = new Address();
+	permanentAdd.setArea("Blr");
+	permanentAdd.setState("KT");
+	permanentAdd.setType("permanent");
+	
+	
+	//associate worker to address objects
+	currentAdd.setWork1(worker);
+	permanentAdd.setWork1(worker);
+	
+	//associate address List to worker obj
+	worker.setAddress(Arrays.asList(currentAdd, permanentAdd));
+	
+	//save parent
+	workRepo.save(worker);
+	System.out.println("Worker with addreses saved...");
+
+		
+	}
+	
+
+//DELETE OPERATIONS	
+	
+	
+	public void deleteWorker(Integer id	) {
+		workRepo.deleteById(id);
+		System.out.println("Worker and its address deleted....");
+	}
+	
+//SELECT OPERATONS
+	
+	public void findWorkerByID(Integer id) {
+		Optional<Worker> byId = workRepo.findById(id);
+		if(byId.isPresent()) {
+			Worker worker = byId.get();
+			System.out.println(worker.getName());
+		}
+		
+	}
+	
+	
+	
+	
+	
+}

@@ -1,0 +1,50 @@
+package com.vishal.h2.config;
+
+import javax.sql.DataSource;
+
+
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.jdbc.DataSourceBuilder;
+import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.transaction.PlatformTransactionManager;
+
+
+@Configuration
+@EnableJpaRepositories(     // decides which repository uses which flow
+        basePackages = "com.vishal.h2.repo",
+        entityManagerFactoryRef = "h2EntityManager",           	
+        transactionManagerRef = "h2TransactionManager"
+)
+public class EmployeeConfigH2 {
+
+	@Bean
+	@ConfigurationProperties(prefix = "spring.h2.datasource")
+	public DataSource h2DataSource() {
+		return DataSourceBuilder.create().build();
+	}
+	
+	@Bean
+	public LocalContainerEntityManagerFactoryBean h2EntityManager(EntityManagerFactoryBuilder builder) {   //h2EntityManager is the JPA engine that manages all database operations for the H2 Database side of your application.
+		return builder
+                .dataSource(h2DataSource())
+                .packages("com.vishal.h2.entity")
+                .persistenceUnit("mysql")
+                .build();
+	}
+	
+	 @Bean
+	    public PlatformTransactionManager h2TransactionManager(
+	            @Qualifier("h2EntityManager")
+	            LocalContainerEntityManagerFactoryBean h2EntityManager) {
+
+	        return new JpaTransactionManager(h2EntityManager.getObject());
+	    }
+	
+	
+}

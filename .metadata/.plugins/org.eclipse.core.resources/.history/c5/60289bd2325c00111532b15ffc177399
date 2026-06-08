@@ -1,0 +1,145 @@
+package com.vishal.service;
+
+import java.time.LocalDate;
+import java.util.Optional;
+
+import org.hibernate.type.descriptor.java.LocalDateJavaType;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.vishal.entity.PanCard;
+import com.vishal.entity.Person;
+import com.vishal.repo.PanCardRepo;
+import com.vishal.repo.PersonRepo;
+
+import jakarta.transaction.Transactional;
+
+@Service
+public class PersonService {
+
+	@Autowired
+	PersonRepo pRepo;
+	
+	@Autowired
+	PanCardRepo panRepo;
+	
+//===========================================================================================================	
+//INSERT OPERATION	
+
+	public void savePersonWithPAN() {
+		Person person = new Person();
+		person.setName("Jingg");
+		person.setGender("Male");
+		LocalDate dob = LocalDate.of(2004, 9, 20);
+		person.setDob(dob);
+		
+		
+		PanCard pan = new PanCard();
+		pan.setIssueDate(LocalDate.now());
+		pan.setPanNo(776655);
+		
+		//association mapping
+		person.setPcard(pan);
+		pan.setPerson1(person);
+		
+		
+		//saving data
+		pRepo.save(person);
+		// person and panCard data is saved to different tables only by saving person due to cascade.all
+		
+	
+		
+	}
+
+	
+	public void savePanWithPerson() {
+		Person person = new Person();
+		person.setName("nandan");
+		person.setGender("Male");
+		LocalDate dob = LocalDate.of(2000, 11, 19);
+		person.setDob(dob);
+		
+		
+		PanCard pan = new PanCard();
+		pan.setIssueDate(LocalDate.now());
+		pan.setPanNo(555555);
+		
+		//association mapping
+		person.setPcard(pan);
+		pan.setPerson1(person);
+		
+		panRepo.save(pan);
+		
+		
+		// can't do this coz cascading is from Person --> PanCard.
+		// for this to work we have to we also have to mention cascade.all in pancard
+	}
+	
+	
+//===========================================================================================================	
+//DELETE OPERATION	
+	
+	public void deleteAPersonById(Integer id) {
+		
+		pRepo.deleteById(id);
+		
+		// deletes both person and its pan card from both tables
+	}
+	@Transactional
+	public void deleteAPan(Integer id) {
+		PanCard pan = panRepo.findById(id).orElse(null);
+
+	    if (pan != null) {
+	        System.out.println("Found PAN : " + pan.getPanId());
+
+	        panRepo.delete(pan);
+
+	        panRepo.flush();
+
+	        System.out.println("Deleted");
+	    }
+		
+		//
+	}
+	
+//===========================================================================================================	
+//READ OPERATION		
+	
+	
+	public void getPersonWithPan(Integer id) {
+		Optional<Person> byId = pRepo.findById(id);
+		if(byId.isPresent()) {
+			Person person = byId.get();
+			System.out.println(person.getName());
+
+			PanCard pan = person.getPcard();
+
+			System.out.println(pan.getPanNo());
+			System.out.println(pan.getIssueDate());
+			
+			// just by applying findBy method on pRepo we got data from panCard table also
+			// possible due to left join query
+		}
+	}
+	
+	public void getPan(Integer id) {
+		Optional<PanCard> byId = panRepo.findById(id);
+		if(byId.isPresent()) {
+			PanCard pan = byId.get();
+			System.out.println(pan.getPanNo());
+
+			Person person = pan.getPerson1();
+			System.out.println(person.getName());
+			System.out.println(person.getGender());
+			
+
+			// just by applying findBy method on panRepo we got data from person table also
+			// possible due to left join query
+			
+		}
+		
+	}
+	
+
+	
+}

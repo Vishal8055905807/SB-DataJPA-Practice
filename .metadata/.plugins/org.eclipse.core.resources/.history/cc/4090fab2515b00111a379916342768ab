@@ -1,0 +1,94 @@
+package com.vishal.service;
+
+import java.time.LocalDate;
+import java.util.Optional;
+
+import org.hibernate.type.descriptor.java.LocalDateJavaType;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.vishal.entity.PanCard;
+import com.vishal.entity.Person;
+import com.vishal.repo.PanCardRepo;
+import com.vishal.repo.PersonRepo;
+
+@Service
+public class PersonService {
+
+	@Autowired
+	PersonRepo pRepo;
+	
+	@Autowired
+	PanCardRepo panRepo;
+
+	public void savePersonWithPAN() {
+		Person person = new Person();
+		person.setName("Dig");
+		person.setGender("Male");
+		LocalDate dob = LocalDate.of(2000, 9, 26);
+		person.setDob(dob);
+		
+		
+		PanCard pan = new PanCard();
+		pan.setIssueDate(LocalDate.now());
+		pan.setPanNo(9999);
+		
+		//association mapping
+		person.setPcard(pan);
+		pan.setPerson1(person);
+		
+		
+		//saving data
+		pRepo.save(person);
+		// person and panCard data is saved to different tables only by saving person due to cascade.all
+		
+	
+		
+	}
+
+	public void deleteAPersonById(Integer id) {
+		
+		pRepo.deleteById(id);
+		
+	}
+	
+	public void deleteAPan(Integer id) {
+		panRepo.deleteById(id);
+	}
+	
+	public void getPersonWithPan(Integer id) {
+		Optional<Person> byId = pRepo.findById(id);
+		if(byId.isPresent()) {
+			Person person = byId.get();
+			System.out.println(person.getName());
+
+			PanCard pan = person.getPcard();
+
+			System.out.println(pan.getPanNo());
+			System.out.println(pan.getIssueDate());
+			
+			// just by applying findBy method on pRepo we got data from panCard table also
+		}
+	}
+	
+	public void savePanWithPerson() {
+		Person person = new Person();
+		person.setName("Surendar");
+		person.setGender("Male");
+		LocalDate dob = LocalDate.of(1999, 11, 17);
+		person.setDob(dob);
+		
+		
+		PanCard pan = new PanCard();
+		pan.setIssueDate(LocalDate.now());
+		pan.setPanNo(797979);
+		
+		//association mapping
+		person.setPcard(pan);
+		pan.setPerson1(person);
+		
+		panRepo.save(pan);
+	}
+	
+	
+}

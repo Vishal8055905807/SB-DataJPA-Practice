@@ -1,0 +1,44 @@
+package com.vishal.service;
+
+import java.time.LocalDate;
+
+import org.hibernate.type.descriptor.java.LocalDateJavaType;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.vishal.entity.PanCard;
+import com.vishal.entity.Person;
+import com.vishal.repo.PanCardRepo;
+import com.vishal.repo.PersonRepo;
+
+@Service
+public class PersonService {
+
+	@Autowired
+PersonRepo pRepo;
+	
+	@Autowired
+	PanCardRepo panRepo;
+
+	public void savePersonWithPAN() {
+		Person p = new Person();
+		p.setName("Vishal");
+		p.setGender("Male");
+		LocalDate dob = LocalDate.of(2001, 10, 9);
+		p.setDob(dob);
+		
+		
+		PanCard pan = new PanCard();
+		pan.setIssueDate(LocalDate.now());
+		pan.setPanNo(908);
+		
+		
+		
+		
+		
+	}
+
+	
+	
+	
+}

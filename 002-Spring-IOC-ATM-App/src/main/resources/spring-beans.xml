@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    
+    
+   <bean id = "sony" class="in.ashokit.SonyPrinter"/>
+   <bean id = "hp" class="in.ashokit.HpPrinter"/>
+   <bean id = "atm" class="in.ashokit.Atm">
+   <constructor-arg name="print" ref="sony" />
+   <property name="printer" ref="hp"/>
+   
+  <!-- Constructor DI will take constructor paramenter name in name attribute --> 
+  <!-- For Setter DI : setPrinter()  ->  printer , i.e. remove set from method name and remaining in lowercase is our name attribute value -->
+   
+   
+   </bean>
+
+</beans>

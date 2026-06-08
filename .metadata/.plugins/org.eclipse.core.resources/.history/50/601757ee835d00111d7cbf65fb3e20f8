@@ -1,0 +1,50 @@
+package com.vishal.service;
+
+import java.util.Arrays;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.vishal.entity.Address;
+import com.vishal.entity.Worker;
+import com.vishal.repo.AddressRepo;
+import com.vishal.repo.WorkerRepo;
+
+@Service
+public class WorkerService {
+
+	@Autowired
+	WorkerRepo workRepo;
+	
+	@Autowired
+	AddressRepo addressRepo;
+	
+	public void saveWorkerWithAddress() {
+		
+	Worker worker = new Worker();
+	worker.setName("Boaster");
+	
+	Address currentAdd = new Address();
+	currentAdd.setArea("Abd");
+	currentAdd.setState("MH");
+	
+	Address permanentAdd = new Address();
+	permanentAdd.setArea("Blr");
+	permanentAdd.setState("KT");
+	
+	
+	//associate worker to address objects
+	currentAdd.setWork1(worker);
+	permanentAdd.setWork1(worker);
+	
+	//associate address List to worker obj
+	worker.setAddress(Arrays.asList(currentAdd, permanentAdd));
+	
+	//save parent
+	workRepo.save(worker);
+	System.out.println("Worker with address saved...");
+	
+		
+	}
+	
+}

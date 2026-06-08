@@ -1,0 +1,38 @@
+package com.vishal.service;
+
+import org.springframework.stereotype.Service;
+
+import com.vishal.entity.Vehicle;
+import com.vishal.entity.VehicleOwner;
+import com.vishal.repo.VehicleOwnerRepo;
+import com.vishal.repo.VehicleRepo;
+
+@Service
+public class VehicleService {
+
+VehicleRepo vehicleRepo;
+
+VehicleOwnerRepo vehicleOwnerRepo;
+
+	
+public void saveVehicleAndOwner() {
+	
+	
+	Vehicle v = new Vehicle();
+	v.setVehicleName("Thar");
+	
+	vehicleRepo.save(v);
+	
+	VehicleOwner vOwner = new VehicleOwner();
+	
+	vOwner.setOwnerName("Vishal");
+	
+	vehicleOwnerRepo.save(vOwner);
+	
+	
+	
+	
+	
+}
+	
+}

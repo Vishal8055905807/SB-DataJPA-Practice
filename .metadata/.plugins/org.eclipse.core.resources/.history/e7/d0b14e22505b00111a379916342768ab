@@ -1,0 +1,46 @@
+package com.vishal.entity;
+
+import java.time.LocalDate;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
+import lombok.Data;
+
+@Entity
+@Data
+
+public class Person {
+
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+Integer personId;
+
+String name;
+
+String gender;
+
+LocalDate dob;	
+
+@OneToOne(mappedBy = "person1" , cascade = CascadeType.ALL)   
+private PanCard pcard;
+
+}
+
+// mappedBy tells HIbernate that - 
+// Don't create another foreign key.Relationship is already managed by PanCard.person1.
+
+//cascade is used to propagate Parent operations to Child operations
+// Here Person = Parent entity
+//      PanCard = Child entity
+// Since cascade is defined in Person entity it will define life-style of PanCard.
+
+
+
+
+
+
+

@@ -1,0 +1,213 @@
+package com.vishal.service;
+
+
+import java.util.Arrays;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
+
+import com.vishal.entity.UserInfo;
+import com.vishal.repo.UserRepo;
+
+@Service
+public class UserService {
+
+	@Autowired
+	UserRepo userRepo;
+
+	public void saveAllUsers() {
+
+		UserInfo user = new UserInfo(101, "Vishal", "Male", "India", 25);
+
+		UserInfo user2 = new UserInfo(102, "Eminem", "Male", "USA", 28);
+
+		UserInfo user3 = new UserInfo(103, "Billie", "Female", "UK", 29);
+
+		UserInfo user4 = new UserInfo(104, "Rock", "Male", "Jamica", 18);
+
+		UserInfo user5 = new UserInfo(105, "Sophie", "Female", "Mexico", 46);
+		
+		UserInfo user6  = new UserInfo(106, "Liam", "Male", "Canada", 28);
+		UserInfo user7  = new UserInfo(107, "Emma", "Female", "USA", 24);
+		UserInfo user8  = new UserInfo(108, "Noah", "Male", "Australia", 31);
+		UserInfo user9  = new UserInfo(109, "Olivia", "Female", "Brazil", 27);
+		UserInfo user10 = new UserInfo(110, "James", "Male", "India", 35);
+
+		UserInfo user11 = new UserInfo(111, "Ava", "Female", "Germany", 22);
+		UserInfo user12 = new UserInfo(112, "William", "Male", "France", 41);
+		UserInfo user13 = new UserInfo(113, "Sophia", "Female", "Italy", 29);
+		UserInfo user14 = new UserInfo(114, "Benjamin", "Male", "Japan", 33);
+		UserInfo user15 = new UserInfo(115, "Isabella", "Female", "Spain", 26);
+
+		UserInfo user16 = new UserInfo(116, "Lucas", "Male", "Russia", 38);
+		UserInfo user17 = new UserInfo(117, "Mia", "Female", "China", 20);
+		UserInfo user18 = new UserInfo(118, "Henry", "Male", "Mexico", 44);
+		UserInfo user19 = new UserInfo(119, "Charlotte", "Female", "South Korea", 32);
+		UserInfo user20 = new UserInfo(120, "Alexander", "Male", "South Africa", 36);
+
+		UserInfo user21 = new UserInfo(121, "Amelia", "Female", "Argentina", 23);
+		UserInfo user22 = new UserInfo(122, "Daniel", "Male", "Turkey", 39);
+		UserInfo user23 = new UserInfo(123, "Harper", "Female", "Egypt", 30);
+		UserInfo user24 = new UserInfo(124, "Michael", "Male", "Nepal", 25);
+		UserInfo user25 = new UserInfo(125, "Evelyn", "Female", "Thailand", 42);
+
+		UserInfo user26 = new UserInfo(126, "Ethan", "Male", "Indonesia", 21);
+		UserInfo user27 = new UserInfo(127, "Abigail", "Female", "New Zealand", 37);
+		UserInfo user28 = new UserInfo(128, "Jacob", "Male", "Pakistan", 34);
+		UserInfo user29 = new UserInfo(129, "Emily", "Female", "Bangladesh", 27);
+		UserInfo user30 = new UserInfo(130, "Logan", "Male", "Sri Lanka", 45);
+
+		UserInfo user31 = new UserInfo(131, "Ella", "Female", "Norway", 19);
+		UserInfo user32 = new UserInfo(132, "Jackson", "Male", "Sweden", 40);
+		UserInfo user33 = new UserInfo(133, "Scarlett", "Female", "Denmark", 31);
+		UserInfo user34 = new UserInfo(134, "Sebastian", "Male", "Finland", 28);
+		UserInfo user35 = new UserInfo(135, "Grace", "Female", "Poland", 24);
+
+		UserInfo user36 = new UserInfo(136, "Aiden", "Male", "Ukraine", 43);
+		UserInfo user37 = new UserInfo(137, "Chloe", "Female", "Portugal", 26);
+		UserInfo user38 = new UserInfo(138, "Matthew", "Male", "Netherlands", 29);
+		UserInfo user39 = new UserInfo(139, "Victoria", "Female", "Belgium", 33);
+		UserInfo user40 = new UserInfo(140, "David", "Male", "Switzerland", 46);
+
+		UserInfo user41 = new UserInfo(141, "Lily", "Female", "Austria", 22);
+		UserInfo user42 = new UserInfo(142, "Joseph", "Male", "Greece", 35);
+		UserInfo user43 = new UserInfo(143, "Hannah", "Female", "Ireland", 27);
+		UserInfo user44 = new UserInfo(144, "Samuel", "Male", "Scotland", 30);
+		UserInfo user45 = new UserInfo(145, "Zoe", "Female", "Hungary", 41);
+
+		UserInfo user46 = new UserInfo(146, "Andrew", "Male", "Czech Republic", 36);
+		UserInfo user47 = new UserInfo(147, "Natalie", "Female", "Romania", 25);
+		UserInfo user48 = new UserInfo(148, "Christopher", "Male", "Kenya", 39);
+		UserInfo user49 = new UserInfo(149, "Leah", "Female", "Nigeria", 23);
+		UserInfo user50 = new UserInfo(150, "Ryan", "Male", "Singapore", 32);
+
+		UserInfo user51 = new UserInfo(151, "Anna", "Female", "Malaysia", 28);
+		UserInfo user52 = new UserInfo(152, "Nathan", "Male", "Philippines", 34);
+		UserInfo user53 = new UserInfo(153, "Lucy", "Female", "Vietnam", 21);
+		UserInfo user54 = new UserInfo(154, "Gabriel", "Male", "UAE", 44);
+		UserInfo user55 = new UserInfo(155, "Aria", "Female", "Saudi Arabia", 38);
+
+		List<UserInfo> li = Arrays.asList(
+
+		        user,
+		        user2,
+		        user3,
+		        user4,
+		        user5,
+
+		        user6,
+		        user7,
+		        user8,
+		        user9,
+		        user10,
+
+		        user11,
+		        user12,
+		        user13,
+		        user14,
+		        user15,
+
+		        user16,
+		        user17,
+		        user18,
+		        user19,
+		        user20,
+
+		        user21,
+		        user22,
+		        user23,
+		        user24,
+		        user25,
+
+		        user26,
+		        user27,
+		        user28,
+		        user29,
+		        user30,
+
+		        user31,
+		        user32,
+		        user33,
+		        user34,
+		        user35,
+
+		        user36,
+		        user37,
+		        user38,
+		        user39,
+		        user40,
+
+		        user41,
+		        user42,
+		        user43,
+		        user44,
+		        user45,
+
+		        user46,
+		        user47,
+		        user48,
+		        user49,
+		        user50,
+
+		        user51,
+		        user52,
+		        user53,
+		        user54,
+		        user55
+		);
+
+		userRepo.saveAll(li);
+
+		System.out.println("users saved");
+	}
+	
+	public void sortByAge() {
+		
+		//Sort is a class with static method by. By takes arguments as varibale name in Entity class
+		// By can also take multiple arguments.First it sorts by age and if age is same then it sorts by id.
+		
+		
+		Sort sort = Sort.by("age" , "id").descending(); 
+		
+		List<UserInfo> allUsers = userRepo.findAll(sort); 
+		allUsers.forEach(System.out::println);
+	}
+	
+	public void pagination() {
+		
+	int pageNumber = 4;  // this data comes from UI
+	int pageSize = 10;
+	
+	PageRequest pageReq = PageRequest.of(pageNumber, pageSize);
+	Page<UserInfo> allUsers = userRepo.findAll(pageReq); 
+	List<UserInfo> listOfUsersInPage = allUsers.getContent();
+	
+	listOfUsersInPage.forEach(System.out::println);
+		
+		
+	}
+	
+	
+	public void QbeByExample() {
+	
+		UserInfo user = new UserInfo();
+		user.setGender("Male");  // This data will be obtained from UI
+		
+		Example<UserInfo> example = Example.of(user);
+		
+		List<UserInfo> filteredList = userRepo.findAll(example);
+		
+		filteredList.forEach(System.out::println);
+	
+		
+	}
+	
+	
+
+}

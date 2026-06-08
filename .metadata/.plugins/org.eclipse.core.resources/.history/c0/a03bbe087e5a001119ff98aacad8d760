@@ -1,0 +1,5 @@
+package com.vishal.h2.config;
+
+public class EmployeeConfigH2 {
+
+}

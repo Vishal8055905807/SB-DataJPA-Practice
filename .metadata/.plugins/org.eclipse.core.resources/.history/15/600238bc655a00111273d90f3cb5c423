@@ -1,0 +1,3 @@
+spring.application.name=13-SB-InMemoryDB
+
+spring.profiles.active= dev

@@ -1,0 +1,49 @@
+package com.vishal.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.vishal.entity.Product;
+import com.vishal.repo.ProductRepo;
+
+@Service 
+public class ProductService {
+	
+@Autowired
+ProductRepo productRepo;
+
+public void saveProduct() {
+	Product p = new Product();
+	p.setId(101);
+	p.setColor("White");
+	p.setProductName("Monitor");
+	p.setPrice(20000);
+	p.setShelfLife(15);
+	
+	productRepo.save(p);
+	
+	System.out.println("Product saved");
+	
+	
+}
+
+public void updateProduct() {
+	Product p = new Product();
+	p.setId(101);
+	p.setColor("White");
+	p.setProductName("Monitor");
+	p.setPrice(22000);
+	p.setShelfLife(15);
+	
+	productRepo.save(p);
+	
+	System.out.println("Product saved");
+	
+	
+}
+
+
+
+
+	
+}

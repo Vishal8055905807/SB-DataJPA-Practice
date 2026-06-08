@@ -1,0 +1,20 @@
+package com.vishal.entity;
+
+import java.time.LocalDate;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import lombok.Data;
+
+@Entity
+@Data
+public class PanCard {
+	
+@Id
+Integer addharNo;
+LocalDate issueData;
+
+
+
+
+}

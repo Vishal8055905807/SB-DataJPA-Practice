@@ -1,0 +1,5 @@
+package com.vishal.repo;
+
+public interface PersonRepo {
+
+}

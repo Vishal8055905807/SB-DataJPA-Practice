@@ -1,0 +1,21 @@
+package com.vishal;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+
+import com.vishal.service.StudentCourseService;
+
+@SpringBootApplication
+public class Application {
+
+	public static void main(String[] args) {
+		ConfigurableApplicationContext ctxt = SpringApplication.run(Application.class, args);
+		StudentCourseService serviceObj = ctxt.getBean(StudentCourseService.class);
+		serviceObj.save();
+		
+		
+		
+	}
+
+}

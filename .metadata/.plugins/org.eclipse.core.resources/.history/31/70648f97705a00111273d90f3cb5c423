@@ -1,0 +1,5 @@
+package com.vishal.mysql.config;
+
+public class ProductConfig {
+
+}

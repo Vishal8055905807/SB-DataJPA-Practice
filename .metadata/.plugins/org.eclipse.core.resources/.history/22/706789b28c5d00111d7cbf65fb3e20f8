@@ -1,0 +1,114 @@
+package com.vishal.service;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.vishal.entity.Address;
+import com.vishal.entity.Worker;
+import com.vishal.repo.AddressRepo;
+import com.vishal.repo.WorkerRepo;
+
+@Service
+public class WorkerService {
+
+	@Autowired
+	WorkerRepo workRepo;
+	
+	@Autowired
+	AddressRepo addressRepo;
+
+//UPSERT OPERATION	
+	
+	
+	public void saveWorkerWithAddress() {
+		
+	Worker worker = new Worker();
+	worker.setName("Derke");
+	
+	Address currentAdd = new Address();
+	currentAdd.setArea("Bph");
+	currentAdd.setState("MP");
+	currentAdd.setType("current");
+	
+	Address permanentAdd = new Address();
+	permanentAdd.setArea("KNR");
+	permanentAdd.setState("UP");
+	permanentAdd.setType("permanent");
+	
+	
+	//associate worker to address objects
+	currentAdd.setWork1(worker);
+	permanentAdd.setWork1(worker);
+	
+	//associate address List to worker obj
+	worker.setAddress(Arrays.asList(currentAdd, permanentAdd));
+	
+	//save parent
+	workRepo.save(worker);
+	System.out.println("Worker with addreses saved...");
+
+		
+	}
+	
+//===============================================================================================================
+//DELETE OPERATIONS	
+	
+	
+	public void deleteWorker(Integer id	) {
+		workRepo.deleteById(id);
+		System.out.println("Worker and its address deleted....");
+	}
+	
+	
+	
+	public void deleteAdress(Integer id) {
+		
+		Address address = addressRepo.findById(id).orElseThrow();
+		
+//		Worker worker = address.getWork1();
+//		
+//		if(worker!= null) {
+//			worker.getAddress().remove(address);  //  unlink/remove child from parent
+//			address.setWork1(null);               //  unlink/remove from child side also
+//		}
+//		
+		addressRepo.delete(address);
+	
+	}
+	
+
+
+//===============================================================================================================	
+//SELECT OPERATONS
+	
+	public void findWorkerByID(Integer id) {  // does not perform left join query 
+											 // for this method to work set fetch TYPE as EAGER
+		Optional<Worker> byId = workRepo.findById(id);
+		if(byId.isPresent()) {
+			Worker worker = byId.get();
+			System.out.println(worker.getName());
+			
+			List<Address> address = worker.getAddress();
+			address.forEach(x -> System.out.println(x.getState()));
+		}
+		
+	}
+	
+	public void findAddress(Integer id) {   // performs left join query 
+		 Optional<Address> byId = addressRepo.findById(id);
+		 if(byId.isPresent()) {
+			 Address address = byId.get();
+			  System.out.println(address.getType());
+			  
+			  Worker work1 = address.getWork1();
+			  System.out.println(work1.getName());
+		 }
+	}
+	
+	
+	
+}

@@ -1,0 +1,10 @@
+spring.application.name=13-SB-InMemoryDB
+
+spring.datasource.url=jdbc:h2:mem:testdb
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=vishal
+spring.datasource.password=vishal
+
+
+spring.h2.console.enabled=true
+spring.h2.console.path=/h2-console

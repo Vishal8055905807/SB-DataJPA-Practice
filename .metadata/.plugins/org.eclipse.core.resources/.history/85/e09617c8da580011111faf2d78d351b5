@@ -1,0 +1,19 @@
+package com.vishal.entity;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Data
+@NoArgsConstructor
+public class Product {
+
+@Id	
+Integer id;
+String name;
+Integer price;
+String color;
+	
+}

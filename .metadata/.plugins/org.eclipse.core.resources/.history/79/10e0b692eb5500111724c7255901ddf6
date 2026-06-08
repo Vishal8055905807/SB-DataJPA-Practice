@@ -1,0 +1,37 @@
+package in.ashokit.main;
+
+import java.util.List;
+
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import in.ashokit.config.AppConfig;
+import in.ashokit.entity.Employee;
+import in.ashokit.service.EmployeeService;
+
+public class MyApp {
+	
+public static void main(String[] args) {
+	AnnotationConfigApplicationContext ctxt = new AnnotationConfigApplicationContext(AppConfig.class);
+	
+	EmployeeService obj = ctxt.getBean(EmployeeService.class);
+	
+	Employee e = new Employee();
+	e.setEmployeeId(003);
+	e.setEmployeeName("Raghu");
+	e.setEmployeeSalaray(1234666.00);
+	
+//	obj.saveEmp(e);
+	
+//	List<Employee> allEmployess = obj.getAllEmployess();
+//	allEmployess.forEach(System.out::println);
+	
+//	Employee employeeById = obj.getEmployeeById(002);
+//	System.out.println(employeeById);
+
+	obj.saveOrUpdateEmployee(e);
+	
+	
+	
+}
+
+}

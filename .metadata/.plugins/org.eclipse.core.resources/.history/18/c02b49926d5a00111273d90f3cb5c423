@@ -1,0 +1,27 @@
+spring.application.name=16-SB-MultipleDBConnections
+
+
+# ======================
+# MYSQL DB
+# ======================
+
+spring.mysql.datasource.jdbc-url=jdbc:mysql://localhost:3306/sbms
+spring.mysql.datasource.username=root
+spring.mysql.datasource.password=root
+spring.mysql.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+# ======================
+# H2 DB
+# ======================
+
+spring.h2.datasource.jdbc-url=jdbc:h2:mem:testdb
+spring.h2.datasource.username=sa
+spring.h2.datasource.password=
+spring.h2.datasource.driver-class-name=org.h2.Driver
+
+# H2 Console
+spring.h2.console.enabled=true
+
+# Hibernate
+spring.jpa.show-sql=true
+spring.jpa.hibernate.ddl-auto=update

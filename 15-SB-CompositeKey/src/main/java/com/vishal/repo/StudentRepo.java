@@ -1,0 +1,11 @@
+package com.vishal.repo;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.vishal.entity.StudentCourse;
+import com.vishal.pk.StudentCoursePk;
+
+public interface StudentRepo extends JpaRepository<StudentCourse, StudentCoursePk> {
+
+}
+
