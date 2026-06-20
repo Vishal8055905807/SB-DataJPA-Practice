@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="com.vishal.repo.ProductRepo"/>
-    <fullyQualifiedTypeName name="lombok.NoArgsConstructor"/>
-    <fullyQualifiedTypeName name="lombok.AllArgsConstructor"/>
-    <fullyQualifiedTypeName name="com.vishal.service.ProductService"/>
-    <fullyQualifiedTypeName name="org.hibernate.jpa.boot.spi.EntityManagerFactoryBuilder"/>
-    <fullyQualifiedTypeName name="javax.sql.DataSource"/>
-    <fullyQualifiedTypeName name="org.springframework.boot.jdbc.DataSourceBuilder"/>
     <fullyQualifiedTypeName name="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"/>
     <fullyQualifiedTypeName name="org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder"/>
-    <fullyQualifiedTypeName name="jakarta.persistence.Table"/>
     <fullyQualifiedTypeName name="com.vishal.mysql.repo.ProductRepo"/>
     <fullyQualifiedTypeName name="com.vishal.h2.repo.EmployeeRepo"/>
     <fullyQualifiedTypeName name="com.vishal.mysql.entity.Product"/>
@@ -28,7 +20,6 @@
     <fullyQualifiedTypeName name="com.vishal.repo.VehicleOwnerRepo"/>
     <fullyQualifiedTypeName name="com.vishal.entity.VehicleOwner"/>
     <fullyQualifiedTypeName name="com.vishal.service.VehicleService"/>
-    <fullyQualifiedTypeName name="lombok.Data"/>
     <fullyQualifiedTypeName name="com.vishal.repo.PersonRepo"/>
     <fullyQualifiedTypeName name="com.vishal.entity.Person"/>
     <fullyQualifiedTypeName name="org.hibernate.type.descriptor.java.LocalDateJavaType"/>
@@ -37,11 +28,8 @@
     <fullyQualifiedTypeName name="com.vishal.service.PersonService"/>
     <fullyQualifiedTypeName name="com.vishal.repo.PanCardRepo"/>
     <fullyQualifiedTypeName name="lombok.ToString"/>
-    <fullyQualifiedTypeName name="jakarta.persistence.Entity"/>
     <fullyQualifiedTypeName name="lombok.Getter"/>
     <fullyQualifiedTypeName name="lombok.Setter"/>
-    <fullyQualifiedTypeName name="jakarta.persistence.Id"/>
-    <fullyQualifiedTypeName name="jakarta.persistence.GeneratedValue"/>
     <fullyQualifiedTypeName name="org.hibernate.annotations.ManyToAny"/>
     <fullyQualifiedTypeName name="jakarta.persistence.JoinColumn"/>
     <fullyQualifiedTypeName name="jakarta.persistence.OneToOne"/>
@@ -49,10 +37,7 @@
     <fullyQualifiedTypeName name="java.awt.List"/>
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="com.sun.tools.javac.api.JavacTaskPool.Worker"/>
-    <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.JpaRepository"/>
-    <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
     <fullyQualifiedTypeName name="com.vishal.repo.AddressRepo"/>
-    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
     <fullyQualifiedTypeName name="com.vishal.entity.Worker"/>
     <fullyQualifiedTypeName name="com.vishal.entity.Address"/>
     <fullyQualifiedTypeName name="java.util.Arrays"/>
@@ -60,4 +45,19 @@
     <fullyQualifiedTypeName name="com.vishal.repo.WorkerRepo"/>
     <fullyQualifiedTypeName name="com.vishal.service.WorkerService"/>
     <fullyQualifiedTypeName name="jakarta.transaction.Transactional"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.Entity"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.GeneratedValue"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.Id"/>
+    <fullyQualifiedTypeName name="lombok.Data"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.Table"/>
+    <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.JpaRepository"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
+    <fullyQualifiedTypeName name="com.vishal.dto.UserDTO"/>
+    <fullyQualifiedTypeName name="java.lang.RuntimeException"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RestController"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="org.springframework.http.ResponseEntity"/>
+    <fullyQualifiedTypeName name="org.springframework.http.HttpStatus"/>
 </qualifiedTypeNameHistroy>
