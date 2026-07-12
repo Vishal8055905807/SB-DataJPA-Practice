@@ -1,5 +1,0 @@
-package com.vishal.config;
-
-public class JpaConfig {
-
-}
